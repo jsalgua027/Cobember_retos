@@ -4,6 +4,10 @@
  */
 package com.mycompany.retoscobember;
 
+import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  *
  * @author Windows10
@@ -56,7 +60,9 @@ package com.mycompany.retoscobember;
  */
 public class RetosCobember {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws FileNotFoundException {
+        Map<String, String> listaUsuarios = new TreeMap<String, String>();
+       listaUsuarios= LecturaCSV.lecturaFicherosCSV("codemberUsers.txt");
+        System.out.println(listaUsuarios);
     }
 }
