@@ -5,11 +5,9 @@
  */
 package com.mycompany.retoscobember;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 /**
  *
@@ -17,43 +15,36 @@ import java.util.TreeMap;
  */
 public class LecturaCSV {
 
-    public static Map<String, String> lecturaFicherosCSV(String nombreFichero) throws FileNotFoundException {
-        String idFichero = nombreFichero;
-        Map<String, String> listaAux = new TreeMap<String, String>();
-        String[] tokens;
-        String linea;
+    public class LeerFicherosTexto {
 
-        // muestro por consola el fichero a leer
-        System.out.println("Leyendo el fichero: " + idFichero);
+        public static void main(String[] args) {
+// Fichero a leer
+            String idFichero = "codemberUsers.txt";
+// Variables para guardar los datos que se van leyendo
+            String[] tokens;
+            String linea;
+            System.out.println("Leyendo el fichero: " + idFichero);
+// Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
+// Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
+// las operaciones con el archivo
+            try ( Scanner datosFichero = new Scanner(new FileReader(idFichero))) {
+                System.out.println("Separando cada elemento del fichero: ");
 
-        // inicializo el flujo de lectura en funcion del idFichero
-        try ( Scanner datosFichero = new Scanner(new File(idFichero), "ISO-8859-1")) {
-
-             datosFichero.nextLine();
-            while (datosFichero.hasNextLine()) {
-
-                linea = datosFichero.nextLine();
-              
-                tokens = linea.split(" ");
-
-                Usuarios m1 = new Usuarios();
-//                m1.setInicial(tokens[0]);
-//                m1.setDesacripcion(tokens[1].replaceAll(" ", ""));
-                    m1.setUsuario(tokens[0]);
-                    m1.setEmail(tokens[1]);
-                    m1.setPassword(tokens[2]);
-                    m1.setEdad(Integer.parseInt(tokens[3]));
-                    m1.setLocalidad(tokens[4]);
-                    m1.setNumeroSeguidores(Integer.parseInt(tokens[5]));
-                    
-                    listaAux.put(m1.getUsuario(), m1.getEmail());
-//                listaAux.put(m1.getInicial(), m1.getDesacripcion());
-
+                while (datosFichero.hasNextLine()) {
+                    linea = datosFichero.nextLine();
+// Se guarda en el array de String cada elemento de la
+// línea en función del carácter separador coma
+                    tokens = linea.split(" ");
+                    for (String string : tokens) {
+                        System.out.print(string + "\t");
+                    }
+                    System.out.println();
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
             }
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
         }
-        return listaAux;
     }
+
 }
+

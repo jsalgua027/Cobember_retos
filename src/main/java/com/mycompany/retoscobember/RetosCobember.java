@@ -61,8 +61,6 @@ import java.util.TreeMap;
 public class RetosCobember {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Map<String, String> listaUsuarios = new TreeMap<String, String>();
-       listaUsuarios= LecturaCSV.lecturaFicherosCSV("codemberUsers.txt");
-        System.out.println(listaUsuarios);
+       
     }
 }
