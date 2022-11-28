@@ -8,16 +8,19 @@ package com.mycompany.retoscobember;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 /**
  *
  * @author Windows10
  */
 public class LecturaCSV {
+    
 
     public class LeerFicherosTexto {
 
         public static void main(String[] args) {
+            ArrayList<Usuarios>listaUsuaris= new ArrayList<>();
 // Fichero a leer
             String idFichero = "codemberUsers.txt";
 // Variables para guardar los datos que se van leyendo
@@ -34,6 +37,7 @@ public class LecturaCSV {
                     linea = datosFichero.nextLine();
 // Se guarda en el array de String cada elemento de la
 // línea en función del carácter separador coma
+                    listaUsuaris.add(tokens)
                     tokens = linea.split(" ");
                     for (String string : tokens) {
                         System.out.print(string + "\t");
