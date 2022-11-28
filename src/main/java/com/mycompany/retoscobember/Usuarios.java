@@ -21,6 +21,20 @@ public class Usuarios {
     public Usuarios() {
     }
 
+    public Usuarios(String usuario, String email, String password, int edad, String localidad, int numeroSeguidores) {
+        this.usuario = usuario;
+        this.email = email;
+        this.password = password;
+        this.edad = edad;
+        this.localidad = localidad;
+        this.numeroSeguidores = numeroSeguidores;
+    }
+
+    
+    
+    
+    
+    
     public String getUsuario() {
         return usuario;
     }

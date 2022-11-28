@@ -24,8 +24,9 @@ public class LecturaCSV {
 // Fichero a leer
             String idFichero = "codemberUsers.txt";
 // Variables para guardar los datos que se van leyendo
-            String[] tokens;
+           String[] tokens={};
             String linea;
+ 
             System.out.println("Leyendo el fichero: " + idFichero);
 // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
 // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
@@ -37,7 +38,7 @@ public class LecturaCSV {
                     linea = datosFichero.nextLine();
 // Se guarda en el array de String cada elemento de la
 // línea en función del carácter separador coma
-                    listaUsuaris.add(tokens)
+                    listaUsuaris.add(new Usuarios(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3]), tokens[4], Integer.parseInt(tokens[5])));
                     tokens = linea.split(" ");
                     for (String string : tokens) {
                         System.out.print(string + "\t");
